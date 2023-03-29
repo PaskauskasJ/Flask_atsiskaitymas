@@ -36,11 +36,11 @@ def bills(groups_id):
 
         new_bill = Bills(bill=bill, price=price,
                          group_id=groups_id, user_id=current_user.id)
-        db.session.add(new_bill)  # adding the note to the database
+        db.session.add(new_bill)
         db.session.commit()
         flash('Bill added!', category='success')
 
-    bills = Bills.query.filter_by(group_id=groups_id)
+    bills = Bills.query.filter_by(group_id=groups_id).join(Bills.user).all()
 
     return render_template("bills.html", bills=bills, user=current_user, groups_id=groups_id, title='Bills')
 

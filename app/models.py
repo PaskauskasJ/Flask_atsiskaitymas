@@ -23,3 +23,4 @@ class Bills(db.Model):
     price = db.Column(db.Integer)
     group_id = db.Column(db.Integer, db.ForeignKey('groups.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship('User', backref='bill_user')
