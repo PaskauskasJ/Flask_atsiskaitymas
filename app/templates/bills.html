@@ -1,0 +1,64 @@
+{% extends "base.html" %} {% block content
+%}
+
+<h1 align="center">Bills of group {{ groups_id }}</h1>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Bill</th>
+      <th scope="col">Price</th>
+      <th scope="col">User</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for bill in bills %}
+    <tr>
+      <th scope="row">{{ bill.id }}</a>
+      </th>
+      <td>{{ bill.bill }}</td>
+      <td>{{ "%.2f" % bill.price }}€</td>
+      <td>{{ bill.user.first_name }}<button type="button" class="close" onClick="deleteBill( {{ bill.id }} )"><span aria-hidden="true">&times;</span>
+      </button></td>
+      
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<h4 align="center">Add new bill for the group</h4>
+  <hr />
+
+    <form method="POST">
+      <label> Bill </label>
+      <input
+        type="text"
+        name="bill"
+        id="bill"
+        class="form-control"
+        placeholder="Insert bill description"
+        required
+      />
+
+      <label> Price </label>
+      <input
+        type="number"
+        step="0.01"
+        name="price"
+        id="price"
+        class="form-control"
+        placeholder="Insert bill price"
+        required
+      />
+      <br />
+      <div align="center">
+        <button type="submit" class="btn btn-primary">Add Bill</button>
+      </div>
+    </form>
+
+    {% endblock %}
+  </form>
+</div>
