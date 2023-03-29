@@ -7,7 +7,6 @@ import json
 views = Blueprint('views', __name__)
 
 
-
 @views.route('/', methods=['GET', 'POST'])
 @login_required
 def groups():
@@ -48,7 +47,7 @@ def bills(groups_id):
 
 @views.route('/delete-bill', methods=['POST'])
 def delete_bill():
-    # this function expects a JSON from the INDEX.js file
+
     bills = json.loads(request.data)
     billsId = bills['billsId']
     bills = Bills.query.get(billsId)
@@ -62,7 +61,7 @@ def delete_bill():
 
 @views.route('/delete-group', methods=['POST'])
 def delete_group():
-    # this function expects a JSON from the INDEX.js file
+
     groups = json.loads(request.data)
     groupsId = groups['groupsId']
     groups = Groups.query.get(groupsId)

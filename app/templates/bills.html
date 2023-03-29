@@ -20,7 +20,7 @@
       <th scope="row">{{ bill.id }}</a>
       </th>
       <td>{{ bill.bill }}</td>
-      <td>{{ bill.price }}</td>
+      <td>{{ bill.price }}€</td>
       <td>{{ bill.user_id }}<button type="button" class="close" onClick="deleteBill( {{ bill.id }} )"><span aria-hidden="true">&times;</span>
       </button></td>
       
@@ -40,16 +40,18 @@
         id="bill"
         class="form-control"
         placeholder="Insert bill description"
+        required
       />
 
       <label> Price </label>
       <input
         type="number"
-        step=".01"
+        step="0.01"
         name="price"
         id="price"
         class="form-control"
         placeholder="Insert bill price"
+        required
       />
       <br />
       <div align="center">
